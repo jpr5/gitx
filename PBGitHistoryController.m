@@ -844,4 +844,14 @@
 	[treeController setContent:gitTree.filteredChildren];
 }
 
+- (void)swipeWithEvent:(NSEvent *)event {
+    if ([event deltaY] > 0) {
+        [[self commitController] selectPrevious:self];
+    } else if ([event deltaY] < 0) {
+        [[self commitController] selectNext:self];
+    } else {
+        [super swipeWithEvent:event];
+    }
+}
+
 @end
